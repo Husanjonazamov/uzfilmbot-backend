@@ -1,0 +1,10 @@
+{
+    "dirs": {
+        "apps": "./",
+        "locale": "./locale/"
+    },
+    "stubs": {
+        "model": "django/model.stub",
+        "serializer": "django/serializer.stub"
+    }
+}
