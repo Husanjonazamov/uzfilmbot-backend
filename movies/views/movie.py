@@ -7,7 +7,7 @@ from rest_framework.views import APIView
 from rest_framework import status
 
 # model import
-from movies.models.movie import Movie
+from movies.models.movie import Movie, Category
 
 # serializers import
 from movies.serializers.movie.movie import MovieSerializer, EpisodeSerializers
@@ -59,6 +59,27 @@ class EpisodesBySeriesCodeView(APIView):
 
 
 
+class DownloadCount(APIView):
+    def get(self, request, code):
+        try:
+            movie = Movie.objects.get(code=code)
+            movie.download_count += 1
+            movie.save()
+            
+            return Response(movie.download_count)
+        
+        except Movie.DoesNotExist:
+            return Response({"error": "Movie not found"}, status=status.HTTP_404_NOT_FOUND)
+        
+        
+class CategoryGetMovie(APIView):
+    def get(self, request, title):  
+        try:
+            category = Category.objects.get(title=title)
+            movies = Movie.objects.filter(category=category).values()
+            return Response(movies, status=200)  
+        except Category.DoesNotExist:
+            return Response({"error": "Category not found"}, status=404)
 
 
 

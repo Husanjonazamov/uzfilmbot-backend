@@ -55,3 +55,5 @@ class UsersList(generics.ListAPIView):
 class SeasonList(generics.ListAPIView):
     queryset = Season.objects.all()
     serializer_class = SeasonSerializer
+    
+    

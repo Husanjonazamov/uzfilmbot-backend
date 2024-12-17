@@ -9,7 +9,7 @@ from api.views.api import (
 
 from treyler.views.treyler import TreylerDetail
 from season.views.season import SeasonDetailView, SeasonListByMovieCode
-from movies.views import MovieDetail, EpisodesBySeriesCodeView
+from movies.views import MovieDetail, EpisodesBySeriesCodeView, DownloadCount, CategoryGetMovie
 
 
 
@@ -19,7 +19,9 @@ urlpatterns = [
 
     # movie views
     path('movies_list/', MoviesList.as_view(), name='movies_list'),
+    path('movies_category/<str:title>', CategoryGetMovie.as_view(), name='category_movie'),
     path('movies/<str:code>/', MovieDetail.as_view(), name='movie-detail'),
+    path('download_count/<int:code>/', DownloadCount.as_view(), name='download_count'),
     path('series/<str:code>/episodes/', EpisodesBySeriesCodeView.as_view(), name='episode'),
 
     # api views 
