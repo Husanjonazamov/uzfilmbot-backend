@@ -6,10 +6,16 @@ from api.views.api import (
                     EpisodeList,
                     UsersList
                     )
-
+from movies.views import (
+    SearchMovie,
+    MovieDetail,
+    EpisodesBySeriesCodeView,
+    DownloadCount,
+    CategoryGetMovie
+    )
 from treyler.views.treyler import TreylerDetail
 from season.views.season import SeasonDetailView, SeasonListByMovieCode
-from movies.views import MovieDetail, EpisodesBySeriesCodeView, DownloadCount, CategoryGetMovie
+
 
 
 
@@ -23,6 +29,7 @@ urlpatterns = [
     path('movies/<str:code>/', MovieDetail.as_view(), name='movie-detail'),
     path('download_count/<int:code>/', DownloadCount.as_view(), name='download_count'),
     path('series/<str:code>/episodes/', EpisodesBySeriesCodeView.as_view(), name='episode'),
+    path("search/", SearchMovie.as_view(), name="search"),
 
     # api views 
     path('category_list/', CategoryList.as_view(), name='category_list'),

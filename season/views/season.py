@@ -28,6 +28,7 @@ class SeasonListByMovieCode(APIView):
 
 
 
+
 class SeasonDetailView(APIView):
     def get(self, request, season_id):
         try:

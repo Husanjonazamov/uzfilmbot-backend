@@ -59,7 +59,6 @@ class Movie(models.Model):
             '-similarity_country', '-similarity_quality', '-similarity_code'
         )
 
-
 class Episode(models.Model):
     series = models.ForeignKey(Movie, related_name='episodes', on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
